@@ -1,0 +1,313 @@
+/* ===== ARAVALI ESTATES – GLOBAL STYLESHEET ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+:root {
+  --navy: #0a1223;
+  --navy2: #0f2040;
+  --gold: #bf9b55;
+  --gold-light: #d4b070;
+  --cream: #f8f5ef;
+  --text: #333;
+  --muted: #888;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: #fff;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+
+a { text-decoration: none; color: inherit; }
+
+/* ===== NAVBAR ===== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  padding: 1.2rem 0;
+  transition: all .4s;
+  background: transparent;
+}
+.nav.scrolled {
+  background: var(--navy);
+  padding: .9rem 0;
+  box-shadow: 0 4px 30px rgba(0,0,0,.25);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logo-icon {
+  color: var(--gold);
+  font-size: 1.3rem;
+}
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  color: #fff;
+  letter-spacing: .04em;
+}
+.logo-text em {
+  color: var(--gold);
+  font-style: normal;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.2rem;
+  margin-left: auto;
+}
+.nav-links a {
+  font-family: 'Jost', sans-serif;
+  font-size: .82rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+  transition: color .2s;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+.nav-cta {
+  background: var(--gold);
+  color: var(--navy) !important;
+  font-family: 'Jost', sans-serif;
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: .6rem 1.4rem;
+  transition: background .2s;
+  flex-shrink: 0;
+}
+.nav-cta:hover { background: var(--gold-light); }
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* ===== PAGE HERO (inner pages) ===== */
+.page-hero {
+  padding: 9rem 2rem 4rem;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::after {
+  content: '';
+  position: absolute; bottom: -2px; left: 0; right: 0;
+  height: 60px;
+  background: #fff;
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.page-hero-tag {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: .7rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  padding: .4rem 1rem;
+  margin-bottom: 1.2rem;
+}
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: #fff;
+  margin-bottom: .8rem;
+}
+.page-hero h1 em { color: var(--gold); font-style: italic; }
+.page-hero p {
+  color: rgba(255,255,255,.65);
+  font-size: 1rem;
+  font-weight: 300;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: 1.2rem;
+  font-size: .75rem;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .1em;
+}
+.breadcrumb a { color: var(--gold); }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--navy);
+  padding: 5rem 0 0;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 3rem;
+}
+.footer-brand p {
+  font-size: .85rem;
+  color: rgba(255,255,255,.5);
+  line-height: 1.7;
+  margin-top: 1rem;
+  font-weight: 300;
+}
+.footer-socials {
+  display: flex;
+  gap: .8rem;
+  margin-top: 1.5rem;
+}
+.footer-socials a {
+  font-size: 1.2rem;
+  opacity: .6;
+  transition: opacity .2s;
+}
+.footer-socials a:hover { opacity: 1; }
+.footer-links h4 {
+  font-family: 'Jost', sans-serif;
+  font-size: .75rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+.footer-links ul { list-style: none; }
+.footer-links ul li {
+  margin-bottom: .65rem;
+  font-size: .83rem;
+  color: rgba(255,255,255,.55);
+  line-height: 1.5;
+}
+.footer-links ul a {
+  color: rgba(255,255,255,.55);
+  transition: color .2s;
+}
+.footer-links ul a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+.footer-bottom p {
+  font-size: .75rem;
+  color: rgba(255,255,255,.3);
+  letter-spacing: .05em;
+}
+
+/* ===== WHATSAPP BUTTON ===== */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 998;
+  box-shadow: 0 4px 20px rgba(37,211,102,.45);
+  transition: transform .3s, box-shadow .3s;
+}
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(37,211,102,.55);
+}
+.whatsapp-btn svg {
+  width: 28px;
+  height: 28px;
+  color: #fff;
+}
+
+/* ===== UTILITY ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+/* ===== CONTACT FORM ===== */
+.form-field { margin-bottom: 1.2rem; }
+.form-field label {
+  display: block;
+  font-size: .75rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: .4rem;
+  font-weight: 500;
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: .85rem 1rem;
+  border: 1.5px solid #e0e0e0;
+  font-family: 'Jost', sans-serif;
+  font-size: .95rem;
+  color: var(--navy);
+  outline: none;
+  transition: border .2s;
+  background: #fff;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus { border-color: var(--gold); }
+.form-field textarea { min-height: 120px; resize: vertical; }
+
+/* Mobile Menu */
+@media(max-width: 860px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: block; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--navy);
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 998;
+  }
+  .nav-links.open a { font-size: 1.2rem; }
+}
+
+@media(max-width: 900px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width: 580px) {
+  .footer-inner { grid-template-columns: 1fr; }
+}

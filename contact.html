@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact Us – Aravali Estates</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.contact-main {
+  padding:5rem 0 6rem;background:var(--cream);
+}
+.contact-inner {
+  max-width:1200px;margin:0 auto;padding:0 2rem;
+  display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:start;
+}
+.contact-form-box {
+  background:#fff;padding:3rem;
+  box-shadow:0 4px 40px rgba(0,0,0,.07);
+}
+.contact-form-box h2 {
+  font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--navy);
+  margin-bottom:.5rem;
+}
+.contact-form-box h2 em { color:var(--gold);font-style:italic; }
+.contact-form-box .sub {
+  font-family:'Jost',sans-serif;font-size:.88rem;color:#888;
+  font-weight:300;margin-bottom:2rem;line-height:1.5;
+}
+.form-row { display:grid;grid-template-columns:1fr 1fr;gap:1rem; }
+.btn-submit {
+  width:100%;background:var(--navy);color:#fff;
+  font-family:'Jost',sans-serif;font-weight:600;font-size:.85rem;
+  letter-spacing:.12em;text-transform:uppercase;padding:1.1rem;
+  border:none;cursor:pointer;transition:background .3s;
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+}
+.btn-submit:hover { background:var(--gold); color:var(--navy); }
+.success-msg {
+  display:none;background:#e8f5e9;border:1px solid #a5d6a7;
+  color:#2e7d32;font-family:'Jost',sans-serif;font-size:.9rem;
+  padding:1rem 1.2rem;margin-top:1rem;text-align:center;
+}
+
+/* Info cards */
+.info-stack { display:flex;flex-direction:column;gap:1.5rem; }
+.info-card {
+  background:#fff;padding:1.8rem;
+  box-shadow:0 2px 20px rgba(0,0,0,.06);
+  border-left:3px solid var(--gold);
+  display:flex;gap:1.2rem;align-items:flex-start;
+}
+.info-icon { font-size:1.6rem;flex-shrink:0;margin-top:.1rem; }
+.info-text h4 {
+  font-family:'Jost',sans-serif;font-size:.75rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.4rem;
+}
+.info-text p { font-size:.88rem;color:#444;line-height:1.65;font-weight:300; }
+.info-text a { color:var(--navy);font-weight:500; }
+.info-text a:hover { color:var(--gold); }
+
+/* Map */
+.map-section { padding:0 0 5rem;background:var(--cream); }
+.map-wrap {
+  max-width:1200px;margin:0 auto;padding:0 2rem;
+}
+.map-wrap h3 {
+  font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--navy);
+  margin-bottom:1.5rem;
+}
+.map-wrap h3 em { color:var(--gold);font-style:italic; }
+.map-embed {
+  width:100%;height:400px;border:0;
+  box-shadow:0 4px 30px rgba(0,0,0,.1);
+}
+
+/* Sales offices */
+.offices-sec { padding:5rem 0;background:#fff; }
+.offices-inner { max-width:1200px;margin:0 auto;padding:0 2rem; }
+.offices-grid {
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;
+}
+.office-card {
+  background:var(--cream);padding:2rem;
+  position:relative;overflow:hidden;transition:transform .3s;
+}
+.office-card::after {
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:3px;background:var(--gold);
+}
+.office-card:hover { transform:translateY(-4px); }
+.office-city {
+  font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--navy);
+  margin-bottom:1rem;
+}
+.office-detail {
+  font-size:.84rem;color:#666;line-height:1.7;font-weight:300;
+}
+.office-detail strong { color:var(--navy);font-weight:600; }
+
+/* Quick connect */
+.quick-connect {
+  padding:4rem 0;
+  background:var(--navy);
+  text-align:center;
+}
+.quick-connect h3 {
+  font-family:'Playfair Display',serif;color:#fff;font-size:1.5rem;margin-bottom:.5rem;
+}
+.quick-connect p { color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:2rem;font-weight:300; }
+.connect-btns { display:flex;gap:1rem;justify-content:center;flex-wrap:wrap; }
+.btn-wa {
+  background:#25D366;color:#fff;
+  font-family:'Jost',sans-serif;font-weight:600;font-size:.85rem;
+  letter-spacing:.1em;text-transform:uppercase;padding:.9rem 2rem;
+  border:none;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-wa:hover { background:#1ebe5d; }
+.btn-call {
+  background:transparent;color:#fff;
+  font-family:'Jost',sans-serif;font-weight:500;font-size:.85rem;
+  letter-spacing:.1em;text-transform:uppercase;padding:.9rem 2rem;
+  border:1px solid rgba(255,255,255,.35);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;
+  transition:all .3s;
+}
+.btn-call:hover { border-color:#fff;background:rgba(255,255,255,.06); }
+
+.section-head { text-align:center;margin-bottom:3.5rem; }
+.section-tag { display:inline-block;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem; }
+.section-title { font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.25; }
+.section-title em { color:var(--gold);font-style:italic; }
+
+@media(max-width:900px){
+  .contact-inner { grid-template-columns:1fr;gap:2.5rem; }
+  .offices-grid { grid-template-columns:1fr 1fr; }
+  .form-row { grid-template-columns:1fr; }
+}
+@media(max-width:580px){
+  .offices-grid { grid-template-columns:1fr; }
+  .contact-form-box { padding:1.8rem; }
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">▲</span><span class="logo-text">Aravali <em>Estates</em></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Book Site Visit</a>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-tag">Get in Touch</div>
+  <h1>We're Here to <em>Help</em> You Find Your Dream Home</h1>
+  <p>Speak to a property consultant today. No pressure, just honest guidance.</p>
+  <div class="breadcrumb"><a href="index.html">Home</a> / Contact Us</div>
+</section>
+
+<!-- CONTACT FORM + INFO -->
+<section class="contact-main">
+  <div class="contact-inner">
+    <div class="contact-form-box">
+      <h2>Send Us a <em>Message</em></h2>
+      <p class="sub">Fill in the form and our team will reach out within 2 business hours.</p>
+
+      <div class="form-row">
+        <div class="form-field"><label>First Name *</label><input type="text" placeholder="Rajesh"/></div>
+        <div class="form-field"><label>Last Name *</label><input type="text" placeholder="Nair"/></div>
+      </div>
+      <div class="form-field"><label>Mobile Number *</label><input type="tel" placeholder="+91 98765 43210"/></div>
+      <div class="form-field"><label>Email Address</label><input type="email" placeholder="rajesh@example.com"/></div>
+      <div class="form-field">
+        <label>Interested In</label>
+        <select>
+          <option value="">Select a Project</option>
+          <option>Green Valley Villas – Sarjapur Road</option>
+          <option>Skyline Heights – Whitefield</option>
+          <option>Hebbal Crown – Hebbal</option>
+          <option>Kanakapura Woods – Kanakapura Road</option>
+          <option>Electronic City Enclave</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Property Type</label>
+        <select>
+          <option value="">Select Type</option>
+          <option>1 BHK Apartment</option>
+          <option>2 BHK Apartment</option>
+          <option>3 BHK Apartment</option>
+          <option>4 BHK Apartment</option>
+          <option>Villa / Row House</option>
+          <option>Penthouse</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Budget Range</label>
+        <select>
+          <option value="">Select Budget</option>
+          <option>₹40L – ₹60L</option>
+          <option>₹60L – ₹80L</option>
+          <option>₹80L – ₹1 Cr</option>
+          <option>₹1 Cr – ₹1.5 Cr</option>
+          <option>₹1.5 Cr – ₹2 Cr</option>
+          <option>₹2 Cr+</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Your Message</label>
+        <textarea placeholder="Tell us about your requirements — location preference, timeline, specific needs..."></textarea>
+      </div>
+      <div class="form-field" style="display:flex;align-items:center;gap:.6rem;">
+        <input type="checkbox" id="rera" style="width:auto;flex-shrink:0;"/>
+        <label for="rera" style="font-size:.8rem;color:#777;letter-spacing:0;text-transform:none;font-weight:300;">I agree to be contacted by Aravali Estates regarding my property enquiry.</label>
+      </div>
+      <button class="btn-submit" onclick="submitForm()">Send Enquiry →</button>
+      <div class="success-msg" id="successMsg">✅ Thank you! Our consultant will reach you within 2 hours.</div>
+    </div>
+
+    <div class="info-stack">
+      <div class="info-card">
+        <div class="info-icon">📍</div>
+        <div class="info-text">
+          <h4>Head Office</h4>
+          <p>Your Office Address, Floor No.,<br/>Area / Landmark, City – PIN Code,<br/>State, India</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">📞</div>
+        <div class="info-text">
+          <h4>Sales Hotline</h4>
+          <p><a href="tel:+91XXXXX5XXXX">+91 XXXXX XXXXX</a><br/><a href="tel:+91XXXXX5XXXX">+91 XXXXX XXXXX</a><br/>Mon – Sat: 9:00 AM – 7:00 PM</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">✉️</div>
+        <div class="info-text">
+          <h4>Email Us</h4>
+          <p>
+            <a href="mailto:sales@yourcompany.in">sales@yourcompany.in</a><br/>
+            <a href="mailto:nri@yourcompany.in">nri@yourcompany.in</a><br/>
+            <a href="mailto:care@yourcompany.in">care@yourcompany.in</a>
+          </p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🌐</div>
+        <div class="info-text">
+          <h4>NRI Desk</h4>
+          <p>Dedicated NRI support available via video call. Schedule a consultation at your convenience across all time zones.</p>
+          <p style="margin-top:.4rem;"><a href="#">Book NRI Consultation →</a></p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🕐</div>
+        <div class="info-text">
+          <h4>Site Visit Hours</h4>
+          <p>Monday – Friday: 9AM – 6PM<br/>Saturday: 9AM – 5PM<br/>Sunday: 10AM – 3PM (by appointment)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section">
+  <div class="map-wrap">
+    <h3>Find Us on the <em>Map</em></h3>
+    <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.985139624705!2d77.60524!3d12.97559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1672e8a36c6b%3A0x32aa30b9e0e94cdf!2sMG%20Road%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1699000000000" allowfullscreen loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- SALES OFFICES -->
+<section class="offices-sec">
+  <div class="offices-inner">
+    <div class="section-head">
+      <div class="section-tag">Our Offices</div>
+      <h2 class="section-title">Visit a <em>Sales Office</em> Near You</h2>
+    </div>
+    <div class="offices-grid">
+      <div class="office-card">
+        <div class="office-city">MG Road (HQ)</div>
+        <div class="office-detail">
+          <strong>Your Office Address, Floor No.</strong><br/>
+          Area / Landmark, City – PIN Code<br/><br/>
+          📞 +91 XXXXX XXXXX<br/>
+          🕐 Mon–Sat: 9AM–7PM
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-city">Whitefield</div>
+        <div class="office-detail">
+          <strong>Area / Landmark</strong><br/>
+          City – PIN Code<br/><br/>
+          📞 +91 XXXXX XXXXX<br/>
+          🕐 Mon–Sat: 9AM–6PM
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-city">Sarjapur Road</div>
+        <div class="office-detail">
+          <strong>Site Office, Main Road</strong><br/>
+          Near Landmark, City – PIN Code<br/><br/>
+          📞 +91 XXXXX XXXXX<br/>
+          🕐 Mon–Sun: 9AM–6PM
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK CONNECT -->
+<section class="quick-connect">
+  <h3>Prefer to Connect Directly?</h3>
+  <p>Reach us instantly on WhatsApp or call our sales line now.</p>
+  <div class="connect-btns">
+    <a href="https://wa.me/919XXXXX5XXXX?text=Hi%2C%20I%27m%20interested%20in%20Aravali%20Estates%20properties." class="btn-wa" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+    <a href="tel:+919XXXXX5XXXX" class="btn-call">📞 Call +91 XXXXX XXXXX</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="margin-bottom:1rem;display:block;"><span class="logo-icon">▲</span><span class="logo-text">Aravali <em>Estates</em></span></a>
+      <p>Crafting iconic residences across Bangalore's most prestigious corridors since 2006.</p>
+    </div>
+    <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-links"><h4>Projects</h4><ul><li><a href="project-details.html">Green Valley Villas</a></li><li><a href="project-details.html">Skyline Heights</a></li><li><a href="project-details.html">Hebbal Crown</a></li></ul></div>
+    <div class="footer-links"><h4>Contact</h4><ul>
+        <li>📍 Your Office Address, Floor No., Area / Landmark, City – PIN Code</li>
+        <li>📞 +91 XXXXX XXXXX</li>
+        <li>✉️ <a href="mailto:sales@yourcompany.in">sales@yourcompany.in</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2024 Aravali Estates Pvt. Ltd. | RERA Reg: PRM/KA/RERA/1251/308/PR/171012/001</p></div>
+</footer>
+
+<a href="https://wa.me/919XXXXX5XXXX" class="whatsapp-btn" target="_blank">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.82

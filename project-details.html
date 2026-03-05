@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Green Valley Villas – Aravali Estates</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.detail-hero {
+  position: relative;
+  height: 70vh;
+  min-height: 520px;
+  background: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1800&q=80') center/cover;
+  display: flex; align-items: flex-end;
+}
+.detail-hero::before { content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(10,18,35,.9) 30%, rgba(10,18,35,.25) 100%); }
+.detail-hero-content {
+  position:relative;z-index:2;
+  max-width:1200px;margin:0 auto;padding:0 2rem 3.5rem;
+  width:100%;
+}
+.detail-hero-content h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,3.4rem);color:#fff;margin-bottom:.5rem;
+}
+.detail-hero-content h1 em { color:var(--gold); font-style:italic; }
+.detail-meta { display:flex;gap:2rem;flex-wrap:wrap;align-items:center;margin-top:.8rem; }
+.meta-pill {
+  background:rgba(255,255,255,.12);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.2);
+  font-family:'Jost',sans-serif;font-size:.8rem;color:#fff;
+  padding:.35rem .9rem;letter-spacing:.05em;
+}
+.detail-price {
+  font-family:'Playfair Display',serif;font-size:1.6rem;
+  color:var(--gold);font-weight:600;
+}
+
+/* Gallery */
+.gallery {
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:220px 220px;
+  gap:4px;
+}
+.gallery img { width:100%;height:100%;object-fit:cover;cursor:pointer;transition:opacity .2s; }
+.gallery img:hover { opacity:.88; }
+.gallery img:first-child { grid-row:span 2; }
+
+/* Main content */
+.detail-content {
+  max-width:1200px;margin:0 auto;padding:4rem 2rem;
+  display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:start;
+}
+.section-h {
+  font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);
+  margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:2px solid var(--gold);
+  display:inline-block;
+}
+.detail-desc { font-size:.95rem;color:#555;line-height:1.85;font-weight:300;margin-bottom:2.5rem; }
+
+/* Amenities */
+.amenities-grid {
+  display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:2.5rem;
+}
+.amenity {
+  display:flex;align-items:center;gap:.6rem;
+  background:var(--cream);padding:.7rem 1rem;
+}
+.amenity-icon { font-size:1.2rem; flex-shrink:0; }
+.amenity-name { font-size:.82rem;color:var(--navy);font-weight:500; }
+
+/* Floor plans */
+.floor-plans { margin-bottom:2.5rem; }
+.fp-tabs { display:flex;gap:0;margin-bottom:1.5rem;border:1.5px solid #e0e0e0; }
+.fp-tab {
+  flex:1;text-align:center;padding:.75rem;
+  font-family:'Jost',sans-serif;font-size:.85rem;letter-spacing:.08em;
+  color:#888;cursor:pointer;background:#fff;border:none;
+  transition:all .2s;
+}
+.fp-tab.active { background:var(--navy);color:#fff; }
+.fp-plan { text-align:center; }
+.fp-plan img { max-width:100%;border:1px solid #eee; }
+.fp-details {
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem;
+}
+.fp-detail-item { text-align:center; }
+.fp-val { font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy); }
+.fp-key { font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#888; }
+
+/* Sidebar */
+.sidebar { position:sticky;top:7rem; }
+.enquiry-box {
+  background:var(--navy);
+  padding:2rem;
+  margin-bottom:1.5rem;
+}
+.enquiry-box h3 {
+  font-family:'Playfair Display',serif;color:#fff;font-size:1.2rem;margin-bottom:.4rem;
+}
+.enquiry-box p { font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:1.5rem;font-weight:300; }
+.enq-input {
+  width:100%;margin-bottom:.8rem;padding:.75rem 1rem;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-family:'Jost',sans-serif;font-size:.9rem;outline:none;
+  transition:border .2s;
+}
+.enq-input:focus { border-color:var(--gold); }
+.enq-input::placeholder { color:rgba(255,255,255,.4); }
+.btn-gold {
+  width:100%;background:var(--gold);color:var(--navy);
+  font-family:'Jost',sans-serif;font-weight:600;font-size:.85rem;
+  letter-spacing:.1em;text-transform:uppercase;padding:1rem;
+  border:none;cursor:pointer;transition:background .2s;
+}
+.btn-gold:hover { background:#d4a843; }
+.btn-navy {
+  width:100%;background:transparent;color:#fff;
+  font-family:'Jost',sans-serif;font-size:.82rem;
+  letter-spacing:.1em;text-transform:uppercase;padding:.85rem;
+  border:1px solid rgba(255,255,255,.3);cursor:pointer;margin-top:.6rem;
+  transition:all .2s;
+}
+.btn-navy:hover { border-color:#fff;background:rgba(255,255,255,.06); }
+.price-box {
+  background:var(--cream);padding:1.5rem;
+  border-left:4px solid var(--gold);
+}
+.price-row {
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.5rem 0;border-bottom:1px solid #e8e8e8;
+}
+.price-row:last-child { border:none; }
+.price-type { font-size:.85rem;color:#555;font-weight:500; }
+.price-val { font-family:'Playfair Display',serif;color:var(--navy);font-size:1.05rem; }
+.rera-box {
+  background:#fff;border:1px solid #e0e0e0;padding:1rem 1.2rem;
+  font-size:.78rem;color:#888;line-height:1.6;margin-top:1rem;
+}
+.rera-box strong { color:var(--navy);font-size:.8rem; }
+
+/* Location tab */
+.location-map-detail { height:320px;background:#eee;overflow:hidden;margin-bottom:2.5rem; }
+.location-map-detail iframe { width:100%;height:100%;border:0; }
+
+/* Virtual Tour */
+.virtual-tour {
+  background:var(--navy);padding:3rem 2rem;text-align:center;margin-bottom:2.5rem;
+  position:relative;overflow:hidden;
+}
+.virtual-tour::before {
+  content:'▶';
+  font-size:5rem;color:rgba(191,155,85,.15);
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.virtual-tour h3 { font-family:'Playfair Display',serif;color:#fff;font-size:1.3rem;margin-bottom:.5rem; }
+.virtual-tour p { color:rgba(255,255,255,.6);font-size:.85rem;margin-bottom:1.2rem;font-weight:300; }
+.btn-tour {
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--gold);color:var(--navy);font-family:'Jost',sans-serif;
+  font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.8rem 1.8rem;border:none;cursor:pointer;transition:background .2s;
+  text-decoration:none;
+}
+.btn-tour:hover { background:#d4a843; }
+
+.btn-primary {
+  background:var(--gold);color:var(--navy);
+  font-family:'Jost',sans-serif;font-weight:600;font-size:.85rem;
+  letter-spacing:.1em;text-transform:uppercase;padding:.9rem 2rem;
+  border:none;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block;
+}
+.section-tag { display:inline-block;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem; }
+.section-title { font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.25; }
+.section-title em { color:var(--gold);font-style:italic; }
+
+@media(max-width:900px){
+  .detail-content { grid-template-columns:1fr;gap:2.5rem; }
+  .sidebar { position:static; }
+  .gallery { grid-template-columns:1fr 1fr;grid-template-rows:auto; }
+  .gallery img:first-child { grid-row:span 1; }
+  .amenities-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:580px){
+  .amenities-grid { grid-template-columns:1fr; }
+  .fp-details { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav scrolled" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">▲</span>
+      <span class="logo-text">Aravali <em>Estates</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Book Site Visit</a>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<!-- PROJECT HERO -->
+<div class="detail-hero">
+  <div class="detail-hero-content">
+    <div style="font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">New Launch · Sarjapur Road</div>
+    <h1>Green Valley <em>Villas</em></h1>
+    <div class="detail-price">₹75 Lakhs – ₹1.2 Cr</div>
+    <div class="detail-meta">
+      <span class="meta-pill">📍 Sarjapur Road, East Bangalore</span>
+      <span class="meta-pill">🏠 42 Villas</span>
+      <span class="meta-pill">📐 2,100 – 3,400 sq.ft.</span>
+      <span class="meta-pill">🏗 Completion: Dec 2025</span>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE GALLERY -->
+<div class="gallery">
+  <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&q=80" alt="Villa Exterior"/>
+  <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" alt="Living Room"/>
+  <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80" alt="Kitchen"/>
+  <img src="https://images.unsplash.com/photo-1560185008-b033106af5c3?w=600&q=80" alt="Bedroom"/>
+  <img src="https://images.unsplash.com/photo-1560184897-ae75f418493e?w=600&q=80" alt="Bathroom"/>
+</div>
+
+<!-- MAIN CONTENT + SIDEBAR -->
+<div class="detail-content">
+  <div class="detail-main">
+
+    <!-- Overview -->
+    <div>
+      <h2 class="section-h">Project Overview</h2>
+      <p class="detail-desc">Green Valley Villas is Aravali Estates' most prestigious villa community — a testament to thoughtful design and meticulous craftsmanship. Nestled across 22 acres of verdant landscape along Sarjapur Road, each villa is an architectural masterpiece with double-height living areas, Italian marble flooring, and private garden spaces that blur the line between indoor and outdoor living.</p>
+      <p class="detail-desc">The project features only 42 exclusive units, ensuring an intimate community feel with maximum privacy. Each home comes pre-installed with a Schneider smart home system, designer modular kitchen, and premium sanitary fittings from Kohler and Duravit.</p>
+    </div>
+
+    <!-- Amenities -->
+    <div>
+      <h2 class="section-h">World-Class Amenities</h2>
+      <div class="amenities-grid">
+        <div class="amenity"><span class="amenity-icon">🏊</span><span class="amenity-name">Olympic Swimming Pool</span></div>
+        <div class="amenity"><span class="amenity-icon">💪</span><span class="amenity-name">Fully Equipped Gymnasium</span></div>
+        <div class="amenity"><span class="amenity-icon">🏸</span><span class="amenity-name">Badminton & Tennis Courts</span></div>
+        <div class="amenity"><span class="amenity-icon">🌿</span><span class="amenity-name">Zen Gardens & Walking Track</span></div>
+        <div class="amenity"><span class="amenity-icon">🎭</span><span class="amenity-name">Mini Amphitheatre</span></div>
+        <div class="amenity"><span class="amenity-icon">👶</span><span class="amenity-name">Children's Adventure Play Area</span></div>
+        <div class="amenity"><span class="amenity-icon">🏛</span><span class="amenity-name">Grand Clubhouse (18,000 sq.ft.)</span></div>
+        <div class="amenity"><span class="amenity-icon">🧖</span><span class="amenity-name">Spa & Wellness Centre</span></div>
+        <div class="amenity"><span class="amenity-icon">⚡</span><span class="amenity-name">EV Charging Points</span></div>
+        <div class="amenity"><span class="amenity-icon">🔒</span><span class="amenity-name">24/7 CCTV & Security</span></div>
+        <div class="amenity"><span class="amenity-icon">🌞</span><span class="amenity-name">Solar Powered Common Areas</span></div>
+        <div class="amenity"><span class="amenity-icon">🚗</span><span class="amenity-name">3 Dedicated Car Parking/Villa</span></div>
+      </div>
+    </div>
+
+    <!-- Floor Plans -->
+    <div class="floor-plans">
+      <h2 class="section-h">Floor Plans</h2>
+      <div class="fp-tabs">
+        <button class="fp-tab active" onclick="switchPlan(this,'3bhk')">3 BHK Villa</button>
+        <button class="fp-tab" onclick="switchPlan(this,'4bhk')">4 BHK Villa</button>
+        <button class="fp-tab" onclick="switchPlan(this,'duplex')">Duplex Villa</button>
+      </div>
+      <div class="fp-plan" id="plan-3bhk">
+        <div style="background:var(--cream);height:280px;display:flex;align-items:center;justify-content:center;border:1px dashed #ccc;">
+          <div style="text-align:center;color:#aaa;">
+            <div style="font-size:3rem;margin-bottom:.5rem;">🏠</div>
+            <div style="font-family:'Jost',sans-serif;font-size:.85rem;">3 BHK Floor Plan</div>
+            <div style="font-size:.75rem;margin-top:.3rem;">2,100 sq.ft. carpet area</div>
+          </div>
+        </div>
+        <div class="fp-details">
+          <div class="fp-detail-item"><div class="fp-val">3</div><div class="fp-key">Bedrooms</div></div>
+          <div class="fp-detail-item"><div class="fp-val">3.5</div><div class="fp-key">Bathrooms</div></div>
+          <div class="fp-detail-item"><div class="fp-val">2,100</div><div class="fp-key">sq.ft. Carpet</div></div>
+        </div>
+      </div>
+      <div class="fp-plan" id="plan-4bhk" style="display:none">
+        <div style="background:var(--cream);height:280px;display:flex;align-items:center;justify-content:center;border:1px dashed #ccc;">
+          <div style="text-align:center;color:#aaa;">
+            <div style="font-size:3rem;margin-bottom:.5rem;">🏡</div>
+            <div style="font-family:'Jost',sans-serif;font-size:.85rem;">4 BHK Floor Plan</div>
+            <div style="font-size:.75rem;margin-top:.3rem;">2,800 sq.ft. carpet area</div>
+          </div>
+        </div>
+        <div class="fp-details">
+          <div class="fp-detail-item"><div class="fp-val">4</div><div class="fp-key">Bedrooms</div></div>
+          <div class="fp-detail-item"><div class="fp-val">4.5</div><div class="fp-key">Bathrooms</div></div>
+          <div class="fp-detail-item"><div class="fp-val">2,800</div><div class="fp-key">sq.ft. Carpet</div></div>
+        </div>
+      </div>
+      <div class="fp-plan" id="plan-duplex" style="display:none">
+        <div style="background:var(--cream);height:280px;display:flex;align-items:center;justify-content:center;border:1px dashed #ccc;">
+          <div style="text-align:center;color:#aaa;">
+            <div style="font-size:3rem;margin-bottom:.5rem;">🏰</div>
+            <div style="font-family:'Jost',sans-serif;font-size:.85rem;">Duplex Villa Floor Plan</div>
+            <div style="font-size:.75rem;margin-top:.3rem;">3,400 sq.ft. carpet area</div>
+          </div>
+        </div>
+        <div class="fp-details">
+          <div class="fp-detail-item"><div class="fp-val">5</div><div class="fp-key">Bedrooms</div></div>
+          <div class="fp-detail-item"><div class="fp-val">5.5</div><div class="fp-key">Bathrooms</div></div>
+          <div class="fp-detail-item"><div class="fp-val">3,400</div><div class="fp-key">sq.ft. Carpet</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Virtual Tour -->
+    <div class="virtual-tour">
+      <h3>Experience a Virtual Tour</h3>
+      <p>Take a 360° walk-through of the model villa from anywhere in the world.</p>
+      <a href="#" class="btn-tour">▶ Launch Virtual Tour</a>
+    </div>
+
+    <!-- Location -->
+    <div>
+      <h2 class="section-h">Location Advantages</h2>
+      <div class="location-map-detail">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15556.37!2d77.6940!3d12.9038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae135c7b26f5df%3A0x64fe425c2b61b57e!2sSarjapur%20Road%2C%20Bengaluru!5e0!3m2!1sen!2sin!4v1699000000000" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">
+        <li style="font-size:.85rem;color:#555;padding:.4rem 0;display:flex;gap:.6rem;align-items:center;"><span style="color:var(--gold);">✦</span>5 mins – Wipro SEZ, Sarjapur</li>
+        <li style="font-size:.85rem;color:#555;padding:.4rem 0;display:flex;gap:.6rem;align-items:center;"><span style="color:var(--gold);">✦</span>10 mins – RMZ Ecospace</li>
+        <li style="font-size:.85rem;color:#555;padding:.4rem 0;display:flex;gap:.6rem;align-items:center;"><span style="color:var(--gold);">✦</span>8 mins – Inventure Academy</li>
+        <li style="font-size:.85rem;color:#555;padding:.4rem 0;display:flex;gap:.6rem;align-items:center;"><span style="color:var(--gold);">✦</span>12 mins – Columbia Asia Hospital</li>
+        <li style="font-size:.85rem;color:#555;padding:.4rem 0;display:flex;gap:.6rem;align-items:center;"><span style="color:var(--gold);">✦</span>15 mins – Bellandur Outer Ring Road</li>
+        <li style="font-size:.85rem;color:#555;padding:.4rem 0;display:flex;gap:.6rem;align-items:center;"><span style="color:var(--gold);">✦</span>25 mins – MG Road / City Centre</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="enquiry-box">
+      <h3>Book a Site Visit</h3>
+      <p>Our consultant will reach you within 2 hours</p>
+      <input class="enq-input" type="text" placeholder="Your Full Name"/>
+      <input class="enq-input" type="tel" placeholder="Mobile Number"/>
+      <input class="enq-input" type="email" placeholder="Email Address"/>
+      <select class="enq-input" style="appearance:none;">
+        <option value="">Interested In</option>
+        <option>3 BHK Villa</option>
+        <option>4 BHK Villa</option>
+        <option>Duplex Villa</option>
+      </select>
+      <button class="btn-gold" onclick="alert('Thank you! Our team will contact you within 2 hours.')">Schedule Site Visit</button>
+      <button class="btn-navy" onclick="alert('Brochure download started!')">⬇ Download Brochure</button>
+    </div>
+
+    <div class="price-box">
+      <h4 style="font-family:'Jost',sans-serif;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);margin-bottom:1rem;font-weight:600;">Price Sheet</h4>
+      <div class="price-row"><span class="price-type">3 BHK (2,100 sq.ft.)</span><span class="price-val">₹75L+</span></div>
+      <div class="price-row"><span class="price-type">4 BHK (2,800 sq.ft.)</span><span class="price-val">₹95L+</span></div>
+      <div class="price-row"><span class="price-type">Duplex (3,400 sq.ft.)</span><span class="price-val">₹1.2 Cr+</span></div>
+      <div class="price-row"><span class="price-type">Maintenance (monthly)</span><span class="price-val">₹8,000</span></div>
+    </div>
+
+    <div class="rera-box">
+      <strong>RERA Registration</strong><br/>
+      PRM/KA/RERA/1251/308/PR/2023/001<br/>
+      <a href="#" style="color:var(--gold);">View on RERA Website →</a>
+    </div>
+
+    <div style="background:var(--cream);padding:1.2rem;margin-top:1rem;font-size:.83rem;color:#555;line-height:1.6;">
+      <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.4rem;font-weight:600;color:var(--navy);">📞 Need Help?</div>
+      <div>Call us at <strong>+91 XXXXX XXXXX</strong></div>
+      <div>Mon – Sat: 9AM – 7PM</div>
+    </div>
+  </aside>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="margin-bottom:1rem;display:block;">
+        <span class="logo-icon">▲</span>
+        <span class="logo-text">Aravali <em>Estates</em></span>
+      </a>
+      <p>Crafting iconic residences across Bangalore's most prestigious corridors since 2006.</p>
+    </div>
+    <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-links"><h4>Projects</h4><ul><li><a href="project-details.html">Green Valley Villas</a></li><li><a href="project-details.html">Skyline Heights</a></li><li><a href="project-details.html">Hebbal Crown</a></li></ul></div>
+    <div class="footer-links"><h4>Contact</h4><ul>
+        <li>📍 Your Office Address, Floor No., Area / Landmark, City – PIN Code</li>
+        <li>📞 +91 XXXXX XXXXX</li>
+        <li>✉️ <a href="mailto:sales@yourcompany.in">sales@yourcompany.in</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2024 Aravali Estates Pvt. Ltd. | RERA Reg: PRM/KA/RERA/1251/308/PR/171012/001</p></div>
+</footer>
+
+<a href="https://wa.me/919XXXXX5XXXX" class="whatsapp-btn" target="_blank">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/script.js"></script>
+<script>
+function switchPlan(btn, id) {
+  document.querySelectorAll('.fp-tab').fo
